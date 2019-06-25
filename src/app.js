@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const auth = require('./middleware/auth-middleware');
 const userController = require('./controllers/user-controller');
+const questions = require('./questions/question');
 
 const app = express();
 
@@ -24,5 +25,5 @@ app.post('/users/login', userController.userLogin);
 
 app.post('/users/logout', auth, userController.userLogout);
 
-
+app.post('/questions',questions);
 module.exports = app;
