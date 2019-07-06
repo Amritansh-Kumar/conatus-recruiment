@@ -115,9 +115,8 @@ userSchema.statics.authenticate = async (email, password) => {
         throw new Error('Unable to Login');
     }
 
-
     return user;
-}
+};
 
 /**
  * Hasing the password before storing it
@@ -129,6 +128,12 @@ userSchema.pre('save', async function (next) {
         user.password = await bcrypt.hash(user.password, 8);
     }
     next();
+});
+
+userSchema.virtual('answers', {
+    ref: 'Answer',
+    localField: '_id',
+    foreignField: 'user'
 });
 
 const User = mongoose.model('User', userSchema);

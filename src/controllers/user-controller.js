@@ -46,9 +46,21 @@ const showMe = async (req, res) => {
     }
 };
 
+const indexAnswers = async (req, res) => {
+  try {
+      const userId = req.params.user_id;
+      const user = await User.findById(userId);
+      await user.populate('answers').execPopulate();
+      res.status(200).send({user, answers: user.answers});
+  }  catch (err) {
+      res.status(400).send({Error: err.message});
+  }
+};
+
 module.exports = {
     userSignUp,
     userLogin,
     userLogout,
-    showMe
+    showMe,
+    indexAnswers
 };

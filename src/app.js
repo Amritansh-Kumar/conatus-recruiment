@@ -6,6 +6,7 @@ const cors = require('cors');
 
 const userController = require('./controllers/user-controller');
 const questionController = require('./controllers/question-controller');
+const answerController = require('./controllers/answer-controller');
 
 const app = express();
 
@@ -29,27 +30,7 @@ app.post('/users/login', userController.userLogin);
 
 app.post('/users/logout', auth, userController.userLogout);
 
-// app.post('/questions', (req, res) => {
-//     var data = fs.readFileSync("file.txt", "UTF-8");
-//     res.send(data);
-//     var perPage = 1;
-//     var page = req.params.page || 1;
-//
-//     Questions
-//         .find({})
-//         .skip((perPage * page) - perPage)
-//         .limit(perPage)
-//         .exec(function (err, questions) {
-//             Questions.count().exec(function (err, count) {
-//                 if (err) return next(err)
-//                 res.json('/Questions', {
-//                     questions: questions,
-//                     current: page,
-//                     pages: Math.ceil(count / perPage)
-//                 })
-//             })
-//         })
-// });
+app.get('/users/:user_id/answers', admin, userController.indexAnswers);
 
 /**
  * question routes
@@ -57,5 +38,12 @@ app.post('/users/logout', auth, userController.userLogout);
 app.get('/questions', questionController.indexQuestion);
 
 app.post('/questions', admin, questionController.storeQuestion);
+
+/**
+ * Answer routes
+ */
+app.post('/answers', auth, answerController.storeAnswer);
+
+app.get('/answers/:user_id', admin, answerController.indexAnswers);
 
 module.exports = app;
