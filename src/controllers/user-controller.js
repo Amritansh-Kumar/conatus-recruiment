@@ -9,7 +9,7 @@ const userSignUp = async (req, res) => {
     } catch (err) {
         res.status(400).send({error: "Email already registered!"});
     }
-}
+};
 
 const userLogin = async (req, res) => {
     try {
@@ -23,7 +23,7 @@ const userLogin = async (req, res) => {
     } catch (error) {
         res.status(400).send({error:'Login attempt failed'});
     }
-}
+};
 
 const userLogout = async (req, res) => {
     try{
@@ -35,7 +35,7 @@ const userLogout = async (req, res) => {
         console.log(error)
         res.status(500).send();
     }
-}
+};
 
 const showMe = async (req, res) => {
     try{
@@ -44,11 +44,11 @@ const showMe = async (req, res) => {
         console.log(error)
         res.status(500).send();
     }
-}
+};
 
 module.exports = {
     userSignUp,
     userLogin,
     userLogout,
     showMe
-}
+};

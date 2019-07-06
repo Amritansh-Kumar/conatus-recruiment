@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const uniqueValidator = require ('mongoose-unique-validator');
+const uniqueValidator = require('mongoose-unique-validator');
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true,
         trim: true,
-        minlength:10,
+        minlength: 10,
         validate(value) {
             if (!validator.isMobilePhone(value, ['en-IN'])) {
                 throw new Error('Please enter a valid mobile number')
@@ -45,14 +45,14 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true,
         trim: true,
-        minlength:7,
+        minlength: 7,
     },
     roll_number: {
         type: String,
         required: true,
         unique: true,
         trim: true,
-        minlength:10,
+        minlength: 10,
     },
     password: {
         type: String,
@@ -65,22 +65,24 @@ const userSchema = new mongoose.Schema({
         required: true
     }
 }, {
-        timestamps: true
-    });
-userSchema.plugin(uniqueValidator, { message: 'Error, {PATH} already exits' });
-    
+    timestamps: true,
+    strict: true,
+    runSettersOnQuery: true
+});
+userSchema.plugin(uniqueValidator, {message: 'Error, {PATH} already exits'});
+
 
 /**
- * Customizing user return object 
- */    
-userSchema.methods.toJSON = function(){
+ * Customizing user return object
+ */
+userSchema.methods.toJSON = function () {
     const user = this;
     const userObject = user.toObject();
 
     delete userObject.password;
 
     return userObject;
-}    
+}
 
 
 /**
@@ -99,10 +101,10 @@ userSchema.methods.generateAuthToken = async function () {
 
 
 /**
- *  using jwt token provided by the user to 
+ *  using jwt token provided by the user to
  */
 userSchema.statics.authenticate = async (email, password) => {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({email});
 
     if (!user) {
         throw new Error('Unable to Login!');
@@ -112,7 +114,7 @@ userSchema.statics.authenticate = async (email, password) => {
     if (!passwordMatch) {
         throw new Error('Unable to Login');
     }
-    
+
 
     return user;
 }
@@ -128,6 +130,7 @@ userSchema.pre('save', async function (next) {
     }
     next();
 });
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
