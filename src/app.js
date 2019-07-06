@@ -16,7 +16,7 @@ app.get('/test', (req, res) => {
     res.send('woking fine');
 })
 
-/**
+ /*
  * user routes
  */
 app.post('/users', userController.userSignUp);
