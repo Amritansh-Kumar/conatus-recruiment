@@ -7,7 +7,7 @@ const userSignUp = async (req, res) => {
         await user.save();
         res.status(201).send({ user, token });
     } catch (err) {
-        res.status(400).send(err);
+        res.status(400).send({error: "Email already registered!"});
     }
 }
 
