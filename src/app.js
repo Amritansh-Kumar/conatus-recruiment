@@ -3,7 +3,8 @@ const bodyParser = require('body-parser');
 const auth = require('./middleware/auth-middleware');
 const userController = require('./controllers/user-controller');
 const cors = require('cors');
-
+const Questions = require('./questions/question');
+const fs = require('fs');
 const app = express();
 
 app.use(cors());
@@ -26,5 +27,25 @@ app.post('/users/login', userController.userLogin);
 
 app.post('/users/logout', auth, userController.userLogout);
 
+app.post('/questions', (req, res) => {
+    var data = fs.readFileSync("file.txt", "UTF-8");
+    res.send(data);
+    var perPage = 1;
+    var page = req.params.page || 1;
 
+    Questions
+        .find({})
+        .skip((perPage * page) - perPage)
+        .limit(perPage)
+        .exec(function (err, questions) {
+            Questions.count().exec(function (err, count) {
+                if (err) return next(err)
+                res.json('/Questions', {
+                    questions: questions,
+                    current: page,
+                    pages: Math.ceil(count / perPage)
+                })
+            })
+        })
+});
 module.exports = app;
