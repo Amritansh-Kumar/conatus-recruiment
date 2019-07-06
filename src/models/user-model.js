@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const uniqueValidator = require ('mongoose-unique-validator');
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -15,6 +16,7 @@ const userSchema = new mongoose.Schema({
         unique: true,
         trim: true,
         lowercase: true,
+        uniqueCaseInsensitive: true,
         validate(value) {
             if (!validator.isEmail(value)) {
                 throw new Error('Please enter a proper email');
@@ -26,6 +28,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true,
         trim: true,
+        minlength:10,
         validate(value) {
             if (!validator.isMobilePhone(value, ['en-IN'])) {
                 throw new Error('Please enter a valid mobile number')
@@ -35,19 +38,21 @@ const userSchema = new mongoose.Schema({
     branch: {
         type: String,
         enum: ['CSE', 'IT'],
-        default: 'CSE'
+        default: 'CSE',
     },
     student_number: {
         type: String,
         required: true,
         unique: true,
-        trim: true
+        trim: true,
+        minlength:7,
     },
     roll_number: {
         type: String,
         required: true,
         unique: true,
-        trim: true
+        trim: true,
+        minlength:10,
     },
     password: {
         type: String,
@@ -62,6 +67,7 @@ const userSchema = new mongoose.Schema({
 }, {
         timestamps: true
     });
+userSchema.plugin(uniqueValidator, { message: 'Error, {PATH} already exits' });
     
 
 /**
@@ -120,10 +126,8 @@ userSchema.pre('save', async function (next) {
     if (user.isModified('password')) {
         user.password = await bcrypt.hash(user.password, 8);
     }
-
     next();
 });
-
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

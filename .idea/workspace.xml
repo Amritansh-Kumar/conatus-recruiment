@@ -16,8 +16,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-26">
-              <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+            <state relative-caret-position="-11">
+              <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -26,7 +26,7 @@
         <entry file="file://$PROJECT_DIR$/package-lock.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="37440">
-              <caret line="3186" column="57" selection-start-line="3186" selection-start-column="57" selection-end-line="3186" selection-end-column="57" />
+              <caret line="3196" column="54" selection-start-line="3196" selection-start-column="54" selection-end-line="3196" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -155,15 +155,15 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-26">
-          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+        <state relative-caret-position="-11">
+          <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/package-lock.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="37440">
-          <caret line="3186" column="57" selection-start-line="3186" selection-start-column="57" selection-end-line="3186" selection-end-column="57" />
+          <caret line="3196" column="54" selection-start-line="3196" selection-start-column="54" selection-end-line="3196" selection-end-column="54" />
         </state>
       </provider>
     </entry>
