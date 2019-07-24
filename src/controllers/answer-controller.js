@@ -16,6 +16,31 @@ const storeAnswer = async (req, res) => {
     }
 };
 
+const BulkUpdateAnswers = async (req, res) => {
+    try {
+        var ops = req.body.map(function (item) {
+            return {
+                "updateOne": {
+                    "filter": {
+                        "question": item.question,
+                        "user": item.user,
+                    },
+                    "update": item,
+                    "new": true,
+                    "upsert": true
+                }
+            }
+        });
+
+// Get the underlying collection via the native node.js driver collection object
+        const answer = await Answer.collection.bulkWrite(ops);
+
+        res.status(200).send({answer});
+    } catch (err) {
+        res.status(400).send({Error: err.message});
+    }
+};
+
 
 const indexAnswers = async (req, res) => {
     try {
