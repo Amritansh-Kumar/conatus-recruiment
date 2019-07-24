@@ -4,7 +4,12 @@ const User = require('../models/user-model');
 const storeAnswer = async (req, res) => {
     const answer = new Answer(req.body);
     try {
-        await answer.save();
+
+        const ans = await Answer.findOneAndUpdate(
+            {question: req.body.question, user: req.body.user},
+            {answer: req.body.answer},
+            {new: true, upsert: true});
+
         res.status(200).send({answer});
     } catch (err) {
         res.status(400).send({Error: err.message});

@@ -52,13 +52,6 @@ questionSchema.pre('save', async function (next) {
     } catch (e) {
         next(e);
     }
-    // question.constructor.countDocuments({}, (err, data) => {
-    //     if (err) {
-    //         next(err);
-    //     }
-    //
-    //
-    // });
 });
 
 
