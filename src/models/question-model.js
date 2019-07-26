@@ -19,7 +19,8 @@ var questionSchema = new mongoose.Schema({
         category: {
             type: String,
             trim: true,
-            lowercase: true
+            lowercase: true,
+            enum:['Java','Html/css','Algorithm','C','Aptitude']
         },
         question: {
             type: String,
