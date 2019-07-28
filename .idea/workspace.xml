@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1e32e726-f3ec-4279-83e1-88da01b7c300" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/controllers/answer-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/answer-controller.js" afterDir="false" />
-    </list>
+    <list default="true" id="1e32e726-f3ec-4279-83e1-88da01b7c300" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -155,7 +153,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19731000" />
+    <option name="totallyTimeSpent" value="19889000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
