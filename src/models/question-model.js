@@ -20,7 +20,7 @@ var questionSchema = new mongoose.Schema({
             type: String,
             trim: true,
             lowercase: true,
-            enum:['Java','Html/css','Algorithm','C','Aptitude']
+            enum:['java','html/css','algorithm','c','aptitude']
         },
         question: {
             type: String,
