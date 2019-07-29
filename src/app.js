@@ -44,6 +44,8 @@ app.post('/questions', admin, questionController.storeQuestion);
  */
 app.post('/answers', auth, answerController.storeAnswer);
 
+app.post('/answersupdate', auth , answerController.BulkUpdateAnswers);
+
 app.get('/answers/:user_id', admin, answerController.indexAnswers);
 
 module.exports = app;

@@ -16,6 +16,12 @@ const storeAnswer = async (req, res) => {
     }
 };
 
+// const score = async(req,res)=>{
+//     try{
+//         var calc = req.body;
+//         var User = calc.filter("question")
+//     }
+// }
 const BulkUpdateAnswers = async (req, res) => {
     try {
         var ops = req.body.map(function (item) {
@@ -58,5 +64,6 @@ const indexAnswers = async (req, res) => {
 
 module.exports = {
     storeAnswer,
-    indexAnswers
+    indexAnswers,
+    BulkUpdateAnswers
 };
