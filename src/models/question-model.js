@@ -43,6 +43,18 @@ questionSchema.path('options').validate({
 });
 
 
+/**
+ * Customizing user return object
+ */
+questionSchema.methods.toJSON = function () {
+    const question = this;
+    const questionObject = question.toObject();
+
+    delete questionObject.solution;
+
+    return questionObject;
+};
+
 questionSchema.pre('save', async function (next) {
     const question = this;
 

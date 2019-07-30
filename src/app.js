@@ -35,7 +35,7 @@ app.get('/users/:user_id/answers', admin, userController.indexAnswers);
 /**
  * question routes
  */
-app.get('/questions', questionController.indexQuestion);
+app.get('/questions', auth,questionController.indexQuestion);
 
 app.post('/questions', admin, questionController.storeQuestion);
 

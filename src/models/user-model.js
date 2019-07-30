@@ -82,7 +82,7 @@ userSchema.methods.toJSON = function () {
     delete userObject.password;
 
     return userObject;
-}
+};
 
 
 /**
@@ -97,7 +97,7 @@ userSchema.methods.generateAuthToken = async function () {
     await user.save();
 
     return token;
-}
+};
 
 
 /**
