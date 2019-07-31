@@ -2,7 +2,7 @@
   "name": "conatus-recruitement",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "env-cmd nodemon src/server.js"
