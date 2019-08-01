@@ -30,7 +30,8 @@ var questionSchema = new mongoose.Schema({
     },
     {
         strict: true,
-        runSettersOnQuery: true
+        runSettersOnQuery: true,
+        toJSON: {virtuals: true}
     });
 
 // validating option field

@@ -67,7 +67,8 @@ const userSchema = new mongoose.Schema({
 }, {
     timestamps: true,
     strict: true,
-    runSettersOnQuery: true
+    runSettersOnQuery: true,
+    toJSON: {virtuals: true}
 });
 userSchema.plugin(uniqueValidator, {message: 'Error, {PATH} already exits'});
 
@@ -130,7 +131,7 @@ userSchema.pre('save', async function (next) {
     next();
 });
 
-userSchema.virtual('answers', {
+userSchema.virtual('result', {
     ref: 'Answer',
     localField: '_id',
     foreignField: 'user'

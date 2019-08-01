@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 // test route
 app.get('/test', (req, res) => {
     res.send('woking fine');
-})
+});
 
 /*
 * user routes
@@ -45,8 +45,6 @@ app.post('/questions', admin, questionController.storeQuestion);
 app.post('/answers', auth, answerController.storeAnswer);
 
 app.post('/answersupdate', auth , answerController.BulkUpdateAnswers);
-
-app.get('/answers/:user_id', admin, answerController.indexAnswers);
 
 module.exports = app;
 
