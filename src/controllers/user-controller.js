@@ -62,25 +62,28 @@ const indexAnswers = async (req, res) => {
                 await answers.forEach(answer => {
                     if (answer.user._id == userId) {
 
-                        if (answer.answer === null || answer.answer === undefined) {
+                        if (answer.question !== null) {
 
-                        } else if (answer.question.solution === answer.answer) {
-                            finalScore += 4;
-                        } else {
-                            finalScore -= 1;
+                            if (answer.answer === null || answer.answer === undefined) {
+
+                            } else if (answer.question.solution === answer.answer) {
+                                finalScore += 4;
+                            } else {
+                                finalScore -= 1;
+                            }
+
+                            const data = {
+                                _id: answer._id,
+                                user: answer.user._id,
+                                question: {
+                                    _id: answer.question._id,
+                                    question_id: answer.question.question_id,
+                                    solution: answer.question.solution
+                                },
+                                answer: answer.answer
+                            };
+                            finalResult.push(data);
                         }
-
-                        const data = {
-                            _id: answer._id,
-                            user: answer.user._id,
-                            question: {
-                                _id: answer.question._id,
-                                question_id: answer.question.question_id,
-                                solution: answer.question.solution
-                            },
-                            answer: answer.answer
-                        };
-                        finalResult.push(data);
                     }
                 });
 
