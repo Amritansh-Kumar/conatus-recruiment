@@ -88,8 +88,6 @@ const indexAnswers = async (req, res) => {
                 res.status(400).send({result: finalResult, score: finalScore});
             });
 
-
-        // res.status(200).send({result: result});
     } catch (err) {
         res.status(400).send({Error: err.message});
     }
