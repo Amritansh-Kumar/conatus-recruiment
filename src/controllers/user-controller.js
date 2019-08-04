@@ -91,6 +91,7 @@ const indexAnswers = async (req, res) => {
     } catch (err) {
         res.status(400).send({Error: err.message});
     }
+
 };
 
 module.exports = {
