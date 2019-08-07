@@ -4,7 +4,7 @@ const Answer = require('../models/answer-model');
 const userSignUp = async (req, res) => {
     const user = new User(req.body);
     try {
-        if (req.body.master !== process.env.MASTER) {
+        if (!req.body.master || req.body.master !== process.env.MASTER) {
             throw new Error('Registration attempt failed');
         }
         
