@@ -4,10 +4,6 @@ const Answer = require('../models/answer-model');
 const userSignUp = async (req, res) => {
     const user = new User(req.body);
     try {
-        if (!req.body.master || req.body.master !== process.env.MASTER) {
-            throw new Error('Registration attempt failed');
-        }
-        
         const token = await user.generateAuthToken();
         await user.save();
         res.status(201).send({user, token});

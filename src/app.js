@@ -13,6 +13,8 @@ const app = express();
 // CORS Setup
 const allowedOrigins = [
     "https://teamconatus.com",
+    "https://mocktest.teamconatus.com",
+    "https://https://quest19recruitment.teamconatus.com"
 ];
 
 

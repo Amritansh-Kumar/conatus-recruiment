@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
         unique: true,
         trim: true,
         minlength: 10,
-        maxlength:10,
+        maxlength: 10,
         validate(value) {
             if (!validator.isMobilePhone(value, ['en-IN'])) {
                 throw new Error('Please enter a valid mobile number')
@@ -47,7 +47,13 @@ const userSchema = new mongoose.Schema({
         unique: true,
         trim: true,
         minlength: 7,
-        maxlength:7
+        maxlength: 7,
+        validate(value) {
+            const studentNumberRegex = /(18027|19027)(10|13|31)[0-9]{3}/;
+            if (studentNumberRegex.test(value)) {
+                throw new Error('Please enter a valid student number')
+            }
+        }
     },
     roll_number: {
         type: String,
@@ -55,7 +61,13 @@ const userSchema = new mongoose.Schema({
         unique: true,
         trim: true,
         minlength: 10,
-        maxlength:10
+        maxlength: 10,
+        validate(value) {
+            const studentNumberRegex = /(18|19)(10|13|31)[0-9]{3}/;
+            if (studentNumberRegex.test(value)) {
+                throw new Error('Please enter a valid roll number')
+            }
+        }
     },
     password: {
         type: String,
