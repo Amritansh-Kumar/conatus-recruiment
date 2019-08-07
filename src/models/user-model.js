@@ -29,6 +29,7 @@ const userSchema = new mongoose.Schema({
         unique: true,
         trim: true,
         minlength: 10,
+        maxlength:10,
         validate(value) {
             if (!validator.isMobilePhone(value, ['en-IN'])) {
                 throw new Error('Please enter a valid mobile number')
@@ -46,6 +47,7 @@ const userSchema = new mongoose.Schema({
         unique: true,
         trim: true,
         minlength: 7,
+        maxlength:7
     },
     roll_number: {
         type: String,
@@ -53,6 +55,7 @@ const userSchema = new mongoose.Schema({
         unique: true,
         trim: true,
         minlength: 10,
+        maxlength:10
     },
     password: {
         type: String,
