@@ -22,9 +22,10 @@ const userLogin = async (req, res) => {
             throw new Error('Login attempt failed');
         }
         const user = await User.authenticate(req.body.email, req.body.password);
-        const token = await user.generateAuthToken();
+        // const token = await user.generateAuthToken();
 
-        res.status(200).send({user, token});
+        // res.status(200).send({user, token});
+        res.status(200).send({user});
     } catch (error) {
         res.status(400).send({error: 'Login attempt failed'});
     }
