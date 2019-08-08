@@ -11,33 +11,33 @@ const answerController = require('./controllers/answer-controller');
 const app = express();
 
 // CORS Setup
-const allowedOrigins = [
-    "https://teamconatus.com",
-    "https://mocktest.teamconatus.com",
-    "https://https://quest19recruitment.teamconatus.com"
-];
+// const allowedOrigins = [
+//     "https://teamconatus.com",
+//     "https://mocktest.teamconatus.com",
+//     "https://https://quest19recruitment.teamconatus.com"
+// ];
+//
+//
+// app.use(cors({
+//     origin: (origin, callback) => {
+//         if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+//             callback(undefined, true);
+//         } else {
+//             callback(new Error("Not allowed by CORS"));
+//         }
+//     },
+//     methods: [
+//         "GET",
+//         "HEAD",
+//         "PUT",
+//         "PATCH",
+//         "POST",
+//         "DELETE"
+//     ]
+// }));
+// app.options("*");
 
-
-app.use(cors({
-    origin: (origin, callback) => {
-        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-            callback(undefined, true);
-        } else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
-    methods: [
-        "GET",
-        "HEAD",
-        "PUT",
-        "PATCH",
-        "POST",
-        "DELETE"
-    ]
-}));
-app.options("*");
-
-// app.use(cors());
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
